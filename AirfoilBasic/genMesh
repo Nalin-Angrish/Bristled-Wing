@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+python3 airfoil.py
+gmsh zone.geo -3 -format msh2 -o zone.msh
+gmshToFoam zone.msh
+changeDictionary
+checkMesh

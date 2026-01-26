@@ -1,0 +1,14 @@
+# Ignore Python virtual environment folders
+venv
+
+# Openfoam generated folders
+[1-9]*/
+processor*
+dynamicCode
+postProcessing
+*.log
+
+# They are generated files
+# And some are just too big to track
+airfoil.geo
+zone.msh

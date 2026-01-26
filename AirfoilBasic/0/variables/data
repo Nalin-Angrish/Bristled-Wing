@@ -1,0 +1,26 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  13
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+v 30; // Velocity here in m/s
+AoA 8; // Angle of Attack in degrees
+
+vx #calc "$v * cos($AoA * 3.14159 / 180)";
+vy #calc "$v * sin($AoA * 3.14159 / 180)";
+
+myLiftDir (#calc "-sin($AoA * 3.14159 / 180)"  #calc "cos($AoA * 3.14159 / 180)" 0);
+myDragDir (#calc "cos($AoA * 3.14159 / 180)"  #calc "sin($AoA * 3.14159 / 180)" 0);
+
+V   uniform ($vx $vy 0);
+
+// ************************************************************************* //
