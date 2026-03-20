@@ -1,0 +1,115 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     5.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      snappyHexMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+castellatedMesh true;
+snap            true;
+addLayers       false;
+
+geometry
+{
+    cylinder
+    {
+        type    searchableCylinder;
+        point1  (0 0 -0.02);   // slightly beyond mesh z bounds
+        point2  (0 0  0.02);
+        radius  0.05;
+    }
+}
+
+castellatedMeshControls
+{
+    maxLocalCells        2000000;
+    maxGlobalCells       4000000;
+    minRefinementCells   10;
+    maxLoadUnbalance     0.10;
+    nCellsBetweenLevels  3;
+
+    features ();
+
+    refinementSurfaces
+    {
+        cylinder
+        {
+            level (4 4);
+            patchInfo
+            {
+                type wall;
+                name cylinder;
+            }
+        }
+    }
+
+    refinementRegions
+    {
+        cylinder
+        {
+            mode inside;
+            levels ((1 1));
+        }
+    }
+
+    resolveFeatureAngle  30;
+    locationInMesh (1.0 0.5 0);  // point in fluid, outside cylinder
+    allowFreeStandingZoneFaces true;
+}
+
+snapControls
+{
+    nSmoothPatch     3;
+    tolerance        2.0;
+    nSolveIter       50;
+    nRelaxIter       5;
+}
+
+addLayersControls
+{
+    relativeSizes       true;
+    expansionRatio      1.2;
+    finalLayerThickness 0.3;
+    minThickness        0.1;
+    nGrow               0;
+    featureAngle        60;
+    nRelaxIter          3;
+    nSmoothSurfaceNormals 1;
+    nSmoothNormals      3;
+    nSmoothThickness    10;
+    nRelaxedIter        5;
+    layers {}
+}
+
+meshQualityControls
+{
+    maxNonOrtho             65;
+    maxBoundarySkewness     20;
+    maxInternalSkewness     4;
+    maxConcave              80;
+    minFlatness             0.5;
+    minVol                  1e-13;
+    minTetQuality           1e-15;
+    minArea                 -1;
+    minTwist                0.02;
+    minDeterminant          0.001;
+    minFaceWeight           0.05;
+    minVolRatio             0.01;
+    minTriangleTwist        -1;
+    nSmoothScale            4;
+    errorReduction          0.75;
+}
+
+mergeTolerance 1e-6;
+debug 0;
+
+// ************************************************************************* //

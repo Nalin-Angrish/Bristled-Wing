@@ -1,0 +1,92 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     5.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  | For copyright notice see file Copyright         |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      dynamicMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// dynamicFvMesh   staticFvMesh;
+dynamicFvMesh   immersedBoundarySolidBodyMotionFvMesh;
+// dynamicFvMesh      immersedBoundaryDynamicRefineSolidBodyMotionFvMesh;
+
+immersedBoundarySolidBodyMotionFvMeshCoeffs
+{
+
+    // Immersed boundary controls
+    motionFunctions
+    (
+        cylinder
+        {
+            solidBodyMotionFunction     translation;
+            translationCoeffs
+            {
+                velocity (0.01 0 0);
+                rampTime 0.1;
+            }
+        }
+    );
+
+    // // Dynamic mesh procedure controls
+
+    // // Refine every refineInterval step
+    // refineInterval   2;
+
+    // // Unrefine every unrefineInterval step
+    // unrefineInterval 1;
+
+    // // Separate refinement/unrefinement steps. In case this is switched on,
+    // // if both refinement and unrefinement should have been performed in a
+    // // single step, unrefinement is skipped. Switched off by default, meaning
+    // // that it should be safe to perform both at the same time
+    // separateUpdates true;
+
+    // // Refinement selection criteria
+    // refinementSelection
+    // {
+    //     type        immersedBoundaryRefinement;
+    //     refinementDistance   0.4;
+    //     unrefinementDistance 0.38;
+
+    //     internalRefinementDistance   0.01;
+    //     internalUnrefinementDistance 0.008;
+    // }
+
+    // // Polyhedral refinement engine controls
+    // active               yes;
+
+    // // Maximum number of cells to allow (not strictly controlled)
+    // maxCells             1000000;
+
+    // // Maximum refinement level
+    // maxRefinementLevel   3;
+
+    // // Number of buffer layers between refinement levels
+    // nRefinementBufferLayers        2;
+
+    // // Number of buffer layers for unrefinement in order to run away from the
+    // // region that is getting refined at the same time in order to avoid point
+    // // level inconsistencies
+    // nUnrefinementBufferLayers      2;
+
+    // // Whether to use edge based consistency check. Needed when one allows more
+    // // than 2 refinement levels (automatically switched on)
+    // edgeBasedConsistency           true;
+
+    // Activate load balance
+    loadBalance no;
+
+    // For using multiple processors
+    numberOfSubdomains 8;
+    method scotch;
+}
+
+// ************************************************************************* //
