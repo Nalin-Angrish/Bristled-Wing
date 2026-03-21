@@ -40,7 +40,7 @@ log*
 
 # Pictures and movies
 
-*.png
+# *.png
 *.jpg
 *.jpeg
 *.bmp
