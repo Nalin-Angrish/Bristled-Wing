@@ -1,7 +1,0 @@
-Running blockMesh on /mnt/data/Projects/BTP/cylinder_bodyfitted2
-Running snappyHexMesh on /mnt/data/Projects/BTP/cylinder_bodyfitted2
-Running potentialFoam on /mnt/data/Projects/BTP/cylinder_bodyfitted2
-Running decomposePar on /mnt/data/Projects/BTP/cylinder_bodyfitted2
-Running parallel pimpleFoam with 8 processors
-Time taken for pimpleFoam execution: 9265 seconds
-Total execution time: 9303 seconds

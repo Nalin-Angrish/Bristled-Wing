@@ -6,7 +6,7 @@
 startTime1=`date +%s`
 
 # Get application name
-application="pimpleFoam"
+application="simpleFoam"
 
 runApplication blockMesh
 runApplication snappyHexMesh -overwrite
@@ -26,5 +26,5 @@ echo "Running parallel $application with 8 processors"
 mpirun -np 8 $application -parallel > log.$application
 
 endTime=`date +%s`
-echo "Time taken for pimpleFoam execution: `expr $endTime - $startTime2` seconds"
+echo "Time taken for $application execution: `expr $endTime - $startTime2` seconds"
 echo "Total execution time: `expr $endTime - $startTime1` seconds"

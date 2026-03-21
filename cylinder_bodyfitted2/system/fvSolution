@@ -44,38 +44,44 @@ potentialFlow
 
 SIMPLE
 {
-    nNonOrthogonalCorrectors 1;
+    nNonOrthogonalCorrectors 2;
+    residualControl
+    {
+        U        1e-6;
+        p        1e-6;
+    }
 
-    pRefPoint (0 -0.45 0.05);
+    pRefPoint (-0.5 0.5 0.005);
     pRefValue 0;
 }
 
-PIMPLE
-{
-    nOuterCorrectors 2;
-    nCorrectors     2;
-    nNonOrthogonalCorrectors 1;
+// PIMPLE
+// {
+//     nOuterCorrectors 5;
+//     nCorrectors     4;
+//     nNonOrthogonalCorrectors 2;
 
-    pRefPoint (0 -0.45 0.05);
-    pRefValue 0;
-    checkMeshCourantNo no;
-    correctPhi yes;
-}
+//     pRefPoint (0 2 0.05);
+//     pRefValue 0;
+//     checkMeshCourantNo no;
+//     correctPhi yes;
+// }
 
-PISO
-{
-    nNonOrthogonalCorrectors 1;
-}
+// PISO
+// {
+//     nNonOrthogonalCorrectors 1;
+// }
 
 relaxationFactors
 {
     equations
     {
-        U         1;
-        UFinal    1;
+        U         0.7;
+        // UFinal    1;
     }
     fields
     {
+      p 0.3;
     }
 }
 
