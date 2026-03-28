@@ -14,11 +14,12 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-// dynamicFvMesh   staticFvMesh;
-dynamicFvMesh   immersedBoundarySolidBodyMotionFvMesh;
+dynamicFvMesh   staticFvMesh;
+// dynamicFvMesh   immersedBoundarySolidBodyMotionFvMesh;
 // dynamicFvMesh      immersedBoundaryDynamicRefineSolidBodyMotionFvMesh;
 
 immersedBoundarySolidBodyMotionFvMeshCoeffs
+// immersedBoundaryDynamicRefineSolidBodyMotionFvMeshCoeffs
 {
 
     // Immersed boundary controls
@@ -81,8 +82,8 @@ immersedBoundarySolidBodyMotionFvMeshCoeffs
     // // than 2 refinement levels (automatically switched on)
     // edgeBasedConsistency           true;
 
-    // Activate load balance
-    loadBalance no;
+    // // Activate load balance
+    // loadBalance no;
 
     // For using multiple processors
     numberOfSubdomains 8;

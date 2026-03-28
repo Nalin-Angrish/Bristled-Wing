@@ -7,7 +7,7 @@ theta = np.linspace(0, 2*np.pi, n, endpoint=False)
 x = r * np.cos(theta)
 y = r * np.sin(theta)
 
-cases = ['cylinder_bodyfitted', 'cylinder_ibm']
+cases = ['cylinder_ibm']
 
 for case in cases:
     with open(case + "/constant/triSurface/cylinder.stl", "w") as f:

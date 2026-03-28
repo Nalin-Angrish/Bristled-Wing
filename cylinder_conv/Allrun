@@ -28,3 +28,6 @@ mpirun -np 8 $application -parallel > log.$application
 endTime=`date +%s`
 echo "Time taken for $application execution: `expr $endTime - $startTime2` seconds"
 echo "Total execution time: `expr $endTime - $startTime1` seconds"
+
+python3 plot_forces.py
+python3 plot_residuals.py
