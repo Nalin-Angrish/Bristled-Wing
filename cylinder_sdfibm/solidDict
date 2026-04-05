@@ -28,7 +28,7 @@ shapes
     {
         name circle1;
         type Circle;
-        radius 1.0;
+        radius 0.05;
     }
 }
 
