@@ -7,6 +7,8 @@ startTime1=`date +%s`
 
 runApplication blockMesh
 
+endTime1=`date +%s`
+
 mkdir 0
 \cp -f 0_org/* 0/
 
@@ -16,12 +18,16 @@ runApplication decomposePar
 startTime2=`date +%s`
 touch sphere.foam
 
-echo "Running parallel sdfibm with 12 processors"
-mpirun -np 12 ../sdfibm/build/src/sdfibm -parallel > log.sdfibm
+echo "Running parallel sdfibm with 8 processors"
+mpirun -np 8 ../sdfibm/build/src/sdfibm -parallel > log.sdfibm
 
-endTime=`date +%s`
-echo "Time taken for sdfibm execution: `expr $endTime - $startTime2` seconds"
-echo "Total execution time: `expr $endTime - $startTime1` seconds"
+endTime2=`date +%s`
 
 python3 plot_forces.py
 python3 plot_residuals.py
+
+endTime3=`date +%s`
+
+echo "Time taken for meshing: `expr $endTime1 - $startTime1` seconds"
+echo "Time taken for sdfibm execution: `expr $endTime2 - $startTime2` seconds"
+echo "Total execution time: `expr $endTime3 - $startTime1` seconds"

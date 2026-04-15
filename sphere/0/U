@@ -9,40 +9,31 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    location    "system";
-    object      controlDict;
+    class       volVectorField;
+    object      U;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-application     sdfibm;
 
-startFrom       startTime;
+dimensions      [0 1 -1 0 0 0 0];
 
-startTime       0;
+internalField   uniform (0 0 0);
 
-stopAt          endTime;
-
-endTime         50;
-
-deltaT          0.01;
-
-writeControl    runTime;
-
-writeInterval   1;
-
-purgeWrite      0;
-
-writeFormat     binary;
-
-writeCompression off;
-
-timeFormat      general;
-
-timePrecision   6;
-
-runTimeModifiable false;
-adjustTimeStep no;
-
-functions 
+boundaryField
 {
+    inlet
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+
+    outlet
+    {
+        type            zeroGradient;
+    }
+    top {type empty;}
+    bottom {type empty;}
+    front {type empty;}
+    back {type empty;}
 }
+
+// ************************************************************************* //
