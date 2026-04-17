@@ -31,10 +31,10 @@ boundaryField
         value uniform 0;
     }
 
-    bottom {type empty;}
-    top {type empty;}
-    front {type empty;}
-    back {type empty;}
+    bottom { type zeroGradient; }
+    top { type zeroGradient; }
+    front { type zeroGradient; }
+    back { type zeroGradient; }
 }
 
 // ************************************************************************* //

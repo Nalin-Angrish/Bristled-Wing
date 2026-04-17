@@ -30,10 +30,26 @@ boundaryField
     {
         type            zeroGradient;
     }
-    top {type empty;}
-    bottom {type empty;}
-    front {type empty;}
-    back {type empty;}
+    top
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    bottom
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    front
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
+    back
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
 }
 
 // ************************************************************************* //
