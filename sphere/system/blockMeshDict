@@ -13,6 +13,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+domainX   42;
+domainYZ  147;
+
 vertices
 (
 	(-1   -1    1)
@@ -87,33 +90,33 @@ blocks
 (
 
 hex ( 16 20 21 17 0 4 5 1 )       ( 25  25 25)  simpleGrading (0.05 0.05 20)
-hex ( 17 21 22 18 1 5 6 2 )       ( 25  48 25)  simpleGrading (0.05 1    20)
+hex ( 17 21 22 18 1 5 6 2 )       ( 25  $domainYZ 25)  simpleGrading (0.05 1    20)
 hex ( 18 22 23 19 2 6 7 3 )       ( 25  25 25)  simpleGrading (0.05 20.0 20)
-hex ( 20 24 25 21 4 8 9 5 )       (168  25 25)  simpleGrading (1    0.05 20)
-hex ( 21 25 26 22 5 9 10 6 )      (168  48 25)  simpleGrading (1    1    20)
-hex ( 22 26 27 23 6 10 11 7 )     (168  25 25)  simpleGrading (1    20.0 20)
+hex ( 20 24 25 21 4 8 9 5 )       ($domainX  25 25)  simpleGrading (1    0.05 20)
+hex ( 21 25 26 22 5 9 10 6 )      ($domainX  $domainYZ 25)  simpleGrading (1    1    20)
+hex ( 22 26 27 23 6 10 11 7 )     ($domainX  25 25)  simpleGrading (1    20.0 20)
 hex ( 24 28 29 25 8 12 13 9 )     ( 25  25 25)  simpleGrading (20.  0.05 20)
-hex ( 25 29 30 26 9 13 14 10 )    ( 25  48 25)  simpleGrading (20.  1    20)
+hex ( 25 29 30 26 9 13 14 10 )    ( 25  $domainYZ 25)  simpleGrading (20.  1    20)
 hex ( 26 30 31 27 10 14 15 11)    ( 25  25 25)  simpleGrading (20.  20.0 20)
 
-hex ( 32 36 37 33 16 20 21 17 )   ( 25  25  48) simpleGrading (0.05 0.05 1)
-hex ( 33 37 38 34 17 21 22 18 )   ( 25  48  48) simpleGrading (0.05 1    1)
-hex ( 34 38 39 35 18 22 23 19 )   ( 25  25  48) simpleGrading (0.05 20.0 1)
-hex ( 36 40 41 37 20 24 25 21 )   (168  25  48) simpleGrading (1    0.05 1)
-hex ( 37 41 42 38 21 25 26 22 )   (168  48  48) simpleGrading (1    1    1)
-hex ( 38 42 43 39 22 26 27 23 )   (168  25  48) simpleGrading (1    20.0 1)
-hex ( 40 44 45 41 24 28 29 25 )   ( 25  25  48) simpleGrading (20.  0.05 1)
-hex ( 41 45 46 42 25 29 30 26 )   ( 25  48  48) simpleGrading (20.  1    1)
-hex ( 42 46 47 43 26 30 31 27 )   ( 25  25  48) simpleGrading (20.  20.0 1)
+hex ( 32 36 37 33 16 20 21 17 )   ( 25  25  $domainYZ) simpleGrading (0.05 0.05 1)
+hex ( 33 37 38 34 17 21 22 18 )   ( 25  $domainYZ  $domainYZ) simpleGrading (0.05 1    1)
+hex ( 34 38 39 35 18 22 23 19 )   ( 25  25  $domainYZ) simpleGrading (0.05 20.0 1)
+hex ( 36 40 41 37 20 24 25 21 )   ($domainX  25  $domainYZ) simpleGrading (1    0.05 1)
+hex ( 37 41 42 38 21 25 26 22 )   ($domainX  $domainYZ  $domainYZ) simpleGrading (1    1    1)
+hex ( 38 42 43 39 22 26 27 23 )   ($domainX  25  $domainYZ) simpleGrading (1    20.0 1)
+hex ( 40 44 45 41 24 28 29 25 )   ( 25  25  $domainYZ) simpleGrading (20.  0.05 1)
+hex ( 41 45 46 42 25 29 30 26 )   ( 25  $domainYZ  $domainYZ) simpleGrading (20.  1    1)
+hex ( 42 46 47 43 26 30 31 27 )   ( 25  25  $domainYZ) simpleGrading (20.  20.0 1)
 
 hex ( 48 52 53 49 32 36 37 33 )   ( 25  25 25)  simpleGrading (0.05 0.05 0.05)
-hex ( 49 53 54 50 33 37 38 34 )   ( 25  48 25)  simpleGrading (0.05 1    0.05)
+hex ( 49 53 54 50 33 37 38 34 )   ( 25  $domainYZ 25)  simpleGrading (0.05 1    0.05)
 hex ( 50 54 55 51 34 38 39 35 )   ( 25  25 25)  simpleGrading (0.05 20.0 0.05)
-hex ( 52 56 57 53 36 40 41 37 )   (168  25 25)  simpleGrading (1    0.05 0.05)
-hex ( 53 57 58 54 37 41 42 38 )   (168  48 25)  simpleGrading (1    1    0.05)
-hex ( 54 58 59 55 38 42 43 39 )   (168  25 25)  simpleGrading (1    20.0 0.05)
+hex ( 52 56 57 53 36 40 41 37 )   ($domainX  25 25)  simpleGrading (1    0.05 0.05)
+hex ( 53 57 58 54 37 41 42 38 )   ($domainX  $domainYZ 25)  simpleGrading (1    1    0.05)
+hex ( 54 58 59 55 38 42 43 39 )   ($domainX  25 25)  simpleGrading (1    20.0 0.05)
 hex ( 56 60 61 57 40 44 45 41 )   ( 25  25 25)  simpleGrading (20.  0.05 0.05)
-hex ( 57 61 62 58 41 45 46 42 )   ( 25  48 25)  simpleGrading (20.  1    0.05)
+hex ( 57 61 62 58 41 45 46 42 )   ( 25  $domainYZ 25)  simpleGrading (20.  1    0.05)
 hex ( 58 62 63 59 42 46 47 43 )   ( 25  25 25)  simpleGrading (20.  20.0 0.05)
 );
 edges();
