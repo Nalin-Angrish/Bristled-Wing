@@ -1,0 +1,72 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  6.0.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      solids;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+meta
+{
+  on_fluid 1;
+  on_twod  1;
+  gravity  (0.0 0.0 0.0);
+}
+  
+shapes
+{
+    shape1
+    {
+        name plate;
+        type Rectangle;
+        radiusa 0.001;      // 0.02*c/2
+        radiusb 0.05;       // c/2
+    }
+}
+
+materials
+{
+    material1
+    {
+      name mat1;
+      type General;
+      rho 1.0;
+      rn 0.9;
+      rt 0.9;
+    }
+}
+
+motions
+{
+    motion1
+    {
+      name custom_moving;
+      type MotionFlapping;
+      plunging_amplitude 0.2;
+      angular_amplitude 80.0;
+      period 1.0;
+    }
+}
+
+solids
+{
+    solid1
+    {
+      shp_name plate;
+      mot_name custom_moving;
+      mat_name mat1;
+      pos (-0.2 0.0 0.0);
+      vel (0.0 0.0 0.0);
+    }
+}
+
+planes {}
