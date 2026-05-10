@@ -3,9 +3,10 @@ import matplotlib.pyplot as plt
 from scipy.signal import savgol_filter
 
 rho = 1.0 # fluid density (kg/m^3)
-U_inf = 0.01 # free stream velocity (m/s)
 D = 0.1 # characteristic length (m)
 dz = 1 # grid spacing in z direction (m)
+T = 1 # Time period of flapping (s)
+U_inf = 2*np.pi*0.1/T # free stream velocity (m/s)
 
 time = []
 force_raw = []
@@ -18,16 +19,16 @@ with open("cloud.out", "r") as f:
         line = line.strip()
         parts = line.split()
         time.append(float(parts[0]))
-        force_raw.append(-float(parts[5])) # Negate to get the force in the correct direction
+        force_raw.append(float(parts[6])) # Negate to get the force in the correct direction
 
 time = np.array(time)
 force = np.array(force_raw)
 total_duration = time[-1]
 
-steady_state_force = np.mean(force[time > 0.9 * total_duration])
+# steady_state_force = np.mean(force[time > 0.9 * total_duration])
 
-print(f"Steady State force = {steady_state_force:.6e}")
-print(f"Coefficient of drag = {steady_state_force / (0.5 * rho * (U_inf**2) * D * dz):.6e}")
+# print(f"Steady State force = {steady_state_force:.6e}")
+# print(f"Coefficient of drag = {steady_state_force / (0.5 * rho * (U_inf**2) * D * dz):.6e}")
 
 fig, ax = plt.subplots(figsize=(12, 6))
 fig.patch.set_facecolor('#0d1117')
@@ -35,8 +36,12 @@ ax.set_facecolor('#0d1117')
 
 ax.plot(time, force, label="Force", color=plt.cm.tab10.colors[0], linewidth=1.4)
 ax.plot(time, np.zeros(len(time)), color='#8b949e', linewidth=1.0, alpha=0.8)
-ax.plot(time, np.ones(len(time)) * steady_state_force,
-        label="Steady State Force", color=plt.cm.tab10.colors[1], linewidth=1.4)
+# ax.plot(time, np.ones(len(time)) * steady_state_force,
+#         label="Steady State Force", color=plt.cm.tab10.colors[1], linewidth=1.4)
+
+vertical_lines = np.arange(0.0, total_duration + T, T)
+for line_time in vertical_lines:
+    ax.axvline(line_time, color='#6e7681', linestyle='--', linewidth=0.8, alpha=0.5)
 
 # ax.set_ylim(0, 5e-05)
 ax.set_xlabel('Time [s]', color='#c9d1d9', fontsize=12)

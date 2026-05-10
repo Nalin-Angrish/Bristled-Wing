@@ -16,8 +16,8 @@ runApplication decomposePar
 startTime2=`date +%s`
 touch sdfibm.foam
 
-echo "Running parallel sdfibm with 8 processors"
-mpirun -np 8 ../sdfibm/build/src/sdfibm -parallel > log.sdfibm
+echo "Running parallel sdfibm with 18 processors"
+mpirun -np 18 ../sdfibm/build/src/sdfibm -parallel > log.sdfibm
 
 endTime=`date +%s`
 echo "Time taken for sdfibm execution: `expr $endTime - $startTime2` seconds"
