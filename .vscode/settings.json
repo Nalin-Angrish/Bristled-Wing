@@ -8,4 +8,5 @@
     "**/0/**/*": "OpenFOAM",
     "**/0_org/**/*": "OpenFOAM",
   },
+  "ROS2.distro": "jazzy",
 }
