@@ -53,7 +53,7 @@ motions
       type MotionFlapping;
       plunging_amplitude 0.2;
       angular_amplitude 80.0;
-      period 1.0;
+      period 12.5;
     }
 }
 
