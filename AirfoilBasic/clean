@@ -1,7 +1,0 @@
-#!/usr/bin/sh
-rm -f *.log
-rm -rf processor*
-rm -rf dynamicCode
-rm -rf postProcessing
-rm -rf [1-9]*
-rm -f *.msh

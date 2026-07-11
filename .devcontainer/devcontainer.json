@@ -1,0 +1,25 @@
+{
+  "name": "OpenFOAM Container",
+  "dockerFile": "Dockerfile",
+  "context": "..",
+  "workspaceFolder": "/workspaces/bristled-wing",
+  "mounts": [
+    "source=/sys,target=/sys,type=bind,readonly",
+    "source=${localWorkspaceFolder},target=/workspaces/bristled-wing,type=bind"
+  ],
+  "runArgs": [
+    "--ipc=host",
+    "--env=DISPLAY"
+  ],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python"
+      ]
+    }
+  }
+}

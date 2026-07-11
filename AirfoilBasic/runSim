@@ -1,8 +1,0 @@
-#!/usr/bin/sh
-decomposePar
-# Get epoch timestamp for log file
-timestamp=$(date +%s)
-# Run the simulation in parallel and log output
-mpirun -np 8 simpleFoam -parallel > simulation_$timestamp.log 2>&1
-# Reconstruct mesh data for post-processing
-reconstructPar
