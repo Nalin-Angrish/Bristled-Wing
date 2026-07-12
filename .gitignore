@@ -12,3 +12,4 @@ postProcessing
 # And some are just too big to track
 airfoil.geo
 zone.msh
+*.png

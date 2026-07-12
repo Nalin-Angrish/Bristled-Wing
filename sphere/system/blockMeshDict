@@ -13,8 +13,8 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-domainX   252;
-domainYZ  72;
+domainX   210;
+domainYZ  60;
 
 vertices
 (
